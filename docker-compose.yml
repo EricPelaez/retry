@@ -18,5 +18,16 @@ services:
       NAME: NodeAPIService
     depends_on:
       - mongo_db
+  api2:
+    build: .
+    ports:
+      - 4001:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: my_db
+      NAME: NodeAPIServiceTwo
+    depends_on:
+      - mongo_db
 volumes:
   mongo_db: {}
